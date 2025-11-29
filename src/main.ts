@@ -1,13 +1,21 @@
+// src/main.js
 import Phaser from "phaser";
-import HelloScene from "./scenes/HelloScene";
+import { GameScene } from "./scenes/GameScene";
 
-const config: Phaser.Types.Core.GameConfig = {
+const config = {
   type: Phaser.AUTO,
-  backgroundColor: "#1d1d1d",
-  parent: "game-container",
   width: 800,
-  height: 600,
-  scene: [HelloScene]
+  height: 450,
+  backgroundColor: "#222222",
+  parent: "game-container", // index.html 에 <div id="game-container"></div> 있다고 가정
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { x: 0, y: 0 }, // 위아래로 직접 움직이므로 중력 없음
+      debug: false,
+    },
+  },
+  scene: [GameScene],
 };
 
 new Phaser.Game(config);
